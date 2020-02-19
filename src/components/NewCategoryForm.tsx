@@ -25,10 +25,16 @@ class NewCategoryForm extends Component<CategoryInterface, NewFormInterface> {
 		});
 	}
 
-	onAdd() {
+	onAdd(type: string) {
 		const id = uuid();
+		const { onAdd } = this.props;
+		const newCategory: CategoryInterface = { id, label: this.state.value || '', parentId: 'kjhb' };
 
-		this.props.onAdd?.({ id, label: this.state.value });
+		onAdd(newCategory, type);
+
+		this.setState({
+			value: '',
+		});
 	}
 
 	render() {

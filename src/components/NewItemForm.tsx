@@ -29,7 +29,11 @@ class NewItemForm extends Component<CategoryInterface, NewFormInterface> {
 	onAdd() {
 		const id = uuid();
 
-		this.props.onAdd?.({ id, label: this.state.value });
+		this.props.onAdd({ id, label: this.state.value }, 'item');
+
+		this.setState({
+			value: '',
+		});
 	}
 
 	render() {
