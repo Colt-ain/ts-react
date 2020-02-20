@@ -59,7 +59,8 @@ class App extends Component<{}, AppState> {
 
 	onRemove(id: string) {
 		this.setState((prevState: AppState) => ({
-			categories: prevState.categories.filter(category => category.id !== id)
+			categories: prevState.categories.filter(category => category.id !== id),
+			items: prevState.items.filter(item => item.id !== id),
 		}));
 	}
 
