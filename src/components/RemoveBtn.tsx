@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
 
-class RemoveBtn extends Component<{ id: string, onRemove: any }> {
-	constructor(props: any) {
+interface RemoveBtnInterface {
+	id: string,
+	onRemove: any
+}
+
+class RemoveBtn extends Component<RemoveBtnInterface> {
+	constructor(props: RemoveBtnInterface) {
 		super(props);
 
 		this.removeHandler = this.removeHandler.bind(this);

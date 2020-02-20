@@ -7,16 +7,18 @@ const actions = {
 	onAdd: (newCategory: CategoryInterface, type: string): void => undefined,
 };
 
-interface NewFormInterface {
+interface NewFormStateInterface {
 	label: string,
 }
 
-class NewItemForm extends Component<{
+interface NewFormInterface {
 	id: string,
 	label: string,
 	parentId?: string,
 	onAdd: typeof actions.onAdd,
-}, NewFormInterface> {
+}
+
+class NewItemForm extends Component<NewFormInterface, NewFormStateInterface> {
 	constructor(props: any) {
 		super(props);
 

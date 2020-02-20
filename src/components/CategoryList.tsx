@@ -16,7 +16,7 @@ class CategoryList extends Component<CategoryListInterface> {
 			<>
 				<div className='categories-list'>
 					{
-						categories.length ? categories.map((category, i) => {
+						categories.map((category, i) => {
 							return <Category
 								onClick={enterCategory}
 								onRemove={onRemove}
@@ -24,7 +24,7 @@ class CategoryList extends Component<CategoryListInterface> {
 								label={category.label}
 								key={i}
 							/>;
-						}) : '...'
+						})
 					}
 				</div>
 			</>

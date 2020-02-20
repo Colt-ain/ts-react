@@ -7,14 +7,16 @@ const actions = {
 	onAdd: (newCategory: CategoryInterface, type: string): void => undefined,
 };
 
-interface NewFormInterface {
+interface NewFormStateInterface {
 	label: string,
 }
 
-class NewCategoryForm extends Component<{
+interface NewCategoryFormInterface {
 	onAdd: typeof actions.onAdd,
-}, NewFormInterface> {
-	constructor(props: any) {
+}
+
+class NewCategoryForm extends Component<NewCategoryFormInterface, NewFormStateInterface> {
+	constructor(props: NewCategoryFormInterface) {
 		super(props);
 
 		this.state = {
@@ -27,7 +29,7 @@ class NewCategoryForm extends Component<{
 
 	onChange(e: any) {
 		this.setState({
-			label: e.target.value,
+			label: e.currentTarget.value,
 		});
 	}
 

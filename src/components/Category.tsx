@@ -7,14 +7,16 @@ const actions = {
 	onClick: (id: string) => true,
 };
 
-class Category extends Component<{
+interface CategoryComponent {
 	label: string,
 	parentId?: string,
 	id: string,
 	onRemove: typeof actions.onRemove,
 	onClick: typeof actions.onClick,
-}> {
-	constructor(props: any) {
+}
+
+class Category extends Component<CategoryComponent> {
+	constructor(props: CategoryComponent) {
 		super(props);
 
 		this.onClick = this.onClick.bind(this);
