@@ -7,7 +7,9 @@ class RemoveBtn extends Component<{ id: string, onRemove: any }> {
 		this.removeHandler = this.removeHandler.bind(this);
 	}
 
-	removeHandler() {
+	removeHandler(e: React.SyntheticEvent<EventTarget>) {
+		e.stopPropagation();
+
 		const { id } = this.props;
 
 		this.props.onRemove(id);

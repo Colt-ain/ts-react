@@ -3,17 +3,25 @@ import CategoryInterface from "../interfaces/Category.interface";
 import uuid from "uuid-random";
 import AddBtn from "./AddBtn";
 
+const actions = {
+	onAdd: (newCategory: CategoryInterface, type: string): void => undefined,
+};
 
 interface NewFormInterface {
-	value: string,
+	label: string,
 }
 
-class NewItemForm extends Component<CategoryInterface, NewFormInterface> {
+class NewItemForm extends Component<{
+	id: string,
+	label: string,
+	parentId?: string,
+	onAdd: typeof actions.onAdd,
+}, NewFormInterface> {
 	constructor(props: any) {
 		super(props);
 
 		this.state = {
-			value: '',
+			label: '',
 		};
 
 		this.onChange = this.onChange.bind(this);
@@ -22,25 +30,33 @@ class NewItemForm extends Component<CategoryInterface, NewFormInterface> {
 
 	onChange(e: any) {
 		this.setState({
-			value: e.target.value,
+			label: e.target.value,
 		});
 	}
 
 	onAdd() {
+		const { label } = this.state;
 		const id = uuid();
 
-		this.props.onAdd({ id, label: this.state.value }, 'item');
+		if (!label) return;
+
+		this.props.onAdd({ id, label }, 'item');
 
 		this.setState({
-			value: '',
+			label: '',
 		});
 	}
 
 	render() {
 		return (
 			<div>
-				Label {': '}
-				<input onChange={this.onChange} value={this.state.value} type="text"/>
+				<div className='label'>New Item {': '}</div>
+				<input
+					onChange={this.onChange}
+					value={this.state.label}
+					type="text"
+					placeholder='Type item label'
+				/>
 				<AddBtn type={'item'} onAdd={this.onAdd} />
 			</div>
 		);

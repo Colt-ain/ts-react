@@ -1,23 +1,32 @@
 import React, {Component} from 'react';
 
-class AddBtn extends Component<{ onAdd: any, type: string }> {
-	constructor(props: any) {
+const actions = {
+	onAdd: (type: string) : void => undefined,
+};
+
+interface AddBtnInterface {
+	onAdd: typeof actions.onAdd,
+	type: string,
+}
+
+class AddBtn extends Component<AddBtnInterface> {
+	constructor(props: AddBtnInterface) {
 		super(props);
 
 		this.onAdd = this.onAdd.bind(this);
 	}
 
 	onAdd() {
-		const { onAdd } = this.props;
+		const { onAdd, type } = this.props;
 
-		onAdd(this.props.type);
+		onAdd(type);
 	}
 
 	render() {
 		const { type } = this.props;
 
 		return (
-			<button onClick={this.props.onAdd}>
+			<button className='add-btn' onClick={this.onAdd}>
 				Add { type }
 			</button>
 		);

@@ -8,16 +8,17 @@ interface Items {
 }
 
 class ItemsList extends Component<{
-	items: Array<Items>
+	items: Array<Items>,
+	onRemove: any,
 }> {
 	render() {
-		const { items } = this.props;
+		const { items, onRemove } = this.props;
 
 		return (
-			<div>
+			<div className='items-list'>
 				{
-					items.map(item => {
-						return <Item item={item} />
+					items.map((item, i) => {
+						return <Item onRemove={onRemove} item={item} key={i} />
 					})
 				}
 			</div>
