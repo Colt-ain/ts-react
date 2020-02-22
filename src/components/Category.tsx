@@ -8,11 +8,11 @@ const actions = {
 };
 
 interface CategoryComponent {
-	label: string,
-	parentId?: string,
-	id: string,
-	onRemove: typeof actions.onRemove,
-	onClick: typeof actions.onClick,
+	label: string;
+	parentId?: string;
+	id: string;
+	onRemove: typeof actions.onRemove;
+	onClick: typeof actions.onClick;
 }
 
 class Category extends Component<CategoryComponent> {

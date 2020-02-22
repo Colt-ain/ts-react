@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 import Item from './Item';
 
 interface Items {
-	id: string,
-	label: string,
-	folderId?: string
+	id: string;
+	label: string;
+	folderId?: string;
 }
 
 class ItemsList extends Component<{
-	items: Array<Items>,
-	onRemove: any,
+	items: Array<Items>;
+	onRemove: any;
 }> {
 	render() {
 		const { items, onRemove } = this.props;

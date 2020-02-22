@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 
 interface RemoveBtnInterface {
-	id: string,
-	onRemove: any
+	id: string;
+	onRemove: any;
 }
 
 class RemoveBtn extends Component<RemoveBtnInterface> {

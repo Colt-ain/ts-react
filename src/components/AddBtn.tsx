@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 
 const actions = {
-	onAdd: (type: string) : void => undefined,
+	onAdd: (type: string): void => undefined,
 };
 
 interface AddBtnInterface {
-	onAdd: typeof actions.onAdd,
-	type: string,
+	onAdd: typeof actions.onAdd;
+	type: string;
 }
 
 class AddBtn extends Component<AddBtnInterface> {

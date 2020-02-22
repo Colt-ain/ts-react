@@ -9,10 +9,10 @@ import ItemsList from "./components/ItemsList";
 import CurrentPath from './components/CurrentPath';
 
 interface AppState {
-	categories: Array<CategoryInterface>,
-	currentPath: string,
-	items: Array<CategoryInterface>,
-	currentCategoryId: string,
+	categories: Array<CategoryInterface>;
+	currentPath: string;
+	items: Array<CategoryInterface>;
+	currentCategoryId: string;
 }
 
 class App extends Component<{}, AppState> {
@@ -66,7 +66,7 @@ class App extends Component<{}, AppState> {
 
 	enterCategory(id: string) {
 		const { categories } = this.state;
-		const category: { id: string, label: string } | undefined = categories.find(category => id === category.id);
+		const category: { id: string; label: string } | undefined = categories.find(category => id === category.id);
 		const newCategories: Array<CategoryInterface> = categories.filter(cary => cary.parentId === id);
 
 		this.setState(prevState => {

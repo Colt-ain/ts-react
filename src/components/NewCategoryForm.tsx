@@ -8,11 +8,11 @@ const actions = {
 };
 
 interface NewFormStateInterface {
-	label: string,
+	label: string;
 }
 
 interface NewCategoryFormInterface {
-	onAdd: typeof actions.onAdd,
+	onAdd: typeof actions.onAdd;
 }
 
 class NewCategoryForm extends Component<NewCategoryFormInterface, NewFormStateInterface> {

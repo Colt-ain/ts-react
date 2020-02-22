@@ -3,9 +3,9 @@ import Category from '../components/Category';
 import CategoryInterface from '../interfaces/Category.interface';
 
 interface CategoryListInterface {
-	categories: Array<CategoryInterface>,
-	onRemove: any,
-	enterCategory: any,
+	categories: Array<CategoryInterface>;
+	onRemove: any;
+	enterCategory: any;
 }
 
 class CategoryList extends Component<CategoryListInterface> {

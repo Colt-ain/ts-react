@@ -8,14 +8,14 @@ const actions = {
 };
 
 interface NewFormStateInterface {
-	label: string,
+	label: string;
 }
 
 interface NewFormInterface {
-	id: string,
-	label: string,
-	parentId?: string,
-	onAdd: typeof actions.onAdd,
+	id: string;
+	label: string;
+	parentId?: string;
+	onAdd: typeof actions.onAdd;
 }
 
 class NewItemForm extends Component<NewFormInterface, NewFormStateInterface> {

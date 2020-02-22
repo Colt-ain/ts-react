@@ -25,10 +25,82 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "eslint": "eslint --ext .jsx --ext .tsx src",
+    "eslint-fix": "eslint --ext .jsx --ext .tsx src --fix"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "plugins": [
+      "react",
+      "typescript-eslint/eslint-plugin",
+      "@typescript-eslint/parser"
+    ],
+    "extends": [
+      "plugin:meteor/recommended",
+      "plugin:react/recommended",
+      "airbnb"
+    ],
+    "env": {
+      "browser": true
+    },
+    "globals": {
+      "expect": false
+    },
+    "rules": {
+      "indent": 4,
+      "import/no-unresolved": 0,
+      "import/no-extraneous-dependencies": 0,
+      "import/extensions": 0,
+      "import/no-absolute-path": 0,
+      "jsx-a11y/anchor-is-valid": [
+        "error",
+        {
+          "components": [
+            "Link"
+          ],
+          "specialLink": [
+            "to"
+          ]
+        }
+      ],
+      "max-len": 0,
+      "no-alert": 0,
+      "curly-newline": 0,
+      "no-console": 0,
+      "no-restricted-globals": 0,
+      "no-return-assign": [
+        "error",
+        "except-parens"
+      ],
+      "no-underscore-dangle": [
+        "error",
+        {
+          "allow": [
+            "_id",
+            "_ensureIndex",
+            "_verifyEmailToken",
+            "_resetPasswordToken",
+            "_name"
+          ]
+        }
+      ],
+      "class-methods-use-this": 0,
+      "react/jsx-filename-extension": 0,
+      "react/forbid-prop-types": 0,
+      "arrow-parens": 0,
+      "no-nested-ternary": 0,
+      "no-unused-expressions": 0,
+      "no-absolute-path": 0
+    },
+    "settings": {
+      "import/resolver": "meteor",
+      "import/no-absolute-path": 0
+    }
   },
   "browserslist": {
     "production": [
@@ -41,5 +113,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.20.0",
+    "@typescript-eslint/parser": "^2.20.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.18.3"
   }
 }
