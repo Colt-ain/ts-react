@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
+import { connect } from "react-redux";
+import InitialStateInterface from "../interfaces/InitialState.interface";
 
 const actions = {
-	onAdd: (type: string): void => undefined,
+	onAdd: (type: string, currentCategoryId: string): void => undefined,
 };
 
 interface AddBtnInterface {
 	onAdd: typeof actions.onAdd;
 	type: string;
+	currentCategoryId: string;
 }
 
 class AddBtn extends Component<AddBtnInterface> {
@@ -17,9 +20,9 @@ class AddBtn extends Component<AddBtnInterface> {
 	}
 
 	onAdd() {
-		const { onAdd, type } = this.props;
+		const { onAdd, type, currentCategoryId } = this.props;
 
-		onAdd(type);
+		onAdd(type, currentCategoryId);
 	}
 
 	render() {
@@ -33,4 +36,8 @@ class AddBtn extends Component<AddBtnInterface> {
 	}
 }
 
-export default AddBtn;
+export default connect((state: InitialStateInterface): { currentCategoryId: string } => {
+	return {
+		currentCategoryId: state.common.currentCategoryId
+	};
+})(AddBtn);

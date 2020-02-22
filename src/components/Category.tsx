@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { connect } from "react-redux";
+import { enterCategory } from '../actions/common';
 import RemoveBtn from './RemoveBtn';
 import Icon from './Icon';
 
@@ -43,4 +45,4 @@ class Category extends Component<CategoryComponent> {
 	}
 }
 
-export default Category;
+export default connect(null, { enterCategory })(Category);

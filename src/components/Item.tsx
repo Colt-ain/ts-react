@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from './Icon';
-import RemoveBtn from "./RemoveBtn";
+import RemoveBtn from './RemoveBtn';
 
 interface ItemInterface {
 	id: string;
@@ -14,7 +14,7 @@ export default function Item(props: { item: ItemInterface; onRemove: any }) {
 	return(
 		<div className='item'>
 			<Icon type={'file'} />
-			<div className="name">{ item.label }</div>
+			<div className='name'>{ item.label }</div>
 			<RemoveBtn id={item.id} onRemove={onRemove} />
 		</div>
 	);

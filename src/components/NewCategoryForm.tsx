@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import AddBtn from "./AddBtn";
+import AddBtn from './AddBtn';
 import CategoryInterface from '../interfaces/Category.interface';
 import uuid from 'uuid-random';
 
@@ -33,10 +33,14 @@ class NewCategoryForm extends Component<NewCategoryFormInterface, NewFormStateIn
 		});
 	}
 
-	onAdd(type: string) {
+	onAdd(type: string, parentId: string) {
 		const id = uuid();
 		const { onAdd } = this.props;
-		const newCategory: CategoryInterface = { id, label: this.state.label || '', parentId: 'kjhb' };
+		const newCategory: CategoryInterface = {
+			id,
+			label: this.state.label || '',
+			parentId,
+		};
 
 		onAdd(newCategory, type);
 
@@ -52,7 +56,7 @@ class NewCategoryForm extends Component<NewCategoryFormInterface, NewFormStateIn
 				<input
 					onChange={this.onChange}
 					value={this.state.label}
-					type="text"
+					type='text'
 					placeholder='Type Category Label'
 				/>
 				<AddBtn type={'category'} onAdd={this.onAdd}/>
