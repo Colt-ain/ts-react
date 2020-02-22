@@ -37,3 +37,12 @@ export const createItem = (item: Category): any => {
 		});
 	};
 };
+
+export const onRemove = (id: string): any => {
+	return (dispatch: AppDispatch): any => {
+		return dispatch({
+			type: ACTION_TYPES.COMMON.ON_REMOVE,
+			payload: { id },
+		});
+	};
+};

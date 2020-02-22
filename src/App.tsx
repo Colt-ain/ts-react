@@ -10,12 +10,13 @@ import NewItemForm from './components/NewItemForm';
 import ItemsList from './components/ItemsList';
 import CurrentPath from './components/CurrentPath';
 import BackBtn from './components/BackBtn';
-import  { enterCategory, createCategory, createItem } from './actions/common';
+import  { enterCategory, createCategory, createItem, onRemove } from './actions/common';
 
 const actions = {
 	enterCategory: (id: string): void => undefined,
 	createCategory: (category: CategoryInterface): void => undefined,
 	createItem: (category: CategoryInterface): void => undefined,
+	onRemove: (id: string): void => undefined,
 };
 
 interface AppState {
@@ -26,6 +27,7 @@ interface AppState {
 	enterCategory: typeof actions.enterCategory;
 	createCategory: typeof actions.createCategory;
 	createItem: typeof actions.createItem;
+	onRemove: typeof actions.onRemove;
 }
 
 interface AppProps {
@@ -46,34 +48,7 @@ class App extends Component<AppState> {
 			currentCategoryId: '',
 		};
 
-		this.onAdd = this.onAdd.bind(this);
 		this.onRemove = this.onRemove.bind(this);
-	}
-
-	setNewItem(newItem: CategoryInterface): void {
-		// newItem.parentId = this.state.currentCategoryId;
-		//
-		// this.setState((prevState: AppState) => {
-		// 	return {
-		// 		items: [...prevState.items, newItem],
-		// 	};
-		// })
-	}
-
-	setNewCategory(newCategory: CategoryInterface): void {
-		// newCategory.parentId = this.state.currentCategoryId;
-		//
-		// this.setState((prevState: AppState) => {
-		// 	return {
-		// 		categories: [...prevState.categories, newCategory],
-		// 	};
-		// })
-	}
-
-	onAdd(newItem: CategoryInterface, type: string): void {
-		if (type === 'item') return this.setNewItem(newItem);
-
-		this.setNewCategory(newItem);
 	}
 
 	onRemove(id: string): void {
@@ -84,10 +59,7 @@ class App extends Component<AppState> {
 	}
 
 	render() {
-		const { currentPath, categories, items, enterCategory, createCategory, currentCategoryId, createItem } = this.props;
-
-		// const filteredCategories = categories.filter(category => (category.parentId === currentCategoryId));
-		// const filteredItems = items.filter(items => (items.parentId === currentCategoryId));
+		const { currentPath, categories, items, enterCategory, createCategory, createItem, onRemove } = this.props;
 
 		return (
 			<div>
@@ -98,9 +70,9 @@ class App extends Component<AppState> {
 				<CurrentPath path={currentPath} />
 				<CategoryList
 					enterCategory={enterCategory}
-					onRemove={this.onRemove}
+					onRemove={onRemove}
 					categories={categories} />
-				<ItemsList items={items} onRemove={this.onRemove} />
+				<ItemsList items={items} onRemove={onRemove} />
 			</div>
 		);
 	}
@@ -119,4 +91,4 @@ const mapStateToProps = (state: InitialStateInterface): AppProps => {
 	};
 };
 
-export default connect(mapStateToProps, { enterCategory, createCategory, createItem })(App);
+export default connect(mapStateToProps, { enterCategory, createCategory, createItem, onRemove })(App);

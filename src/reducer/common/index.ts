@@ -34,17 +34,18 @@ export default function common(state: CommonInterface  = initialState, action: A
 	switch (type) {
 		case COMMON.GO_BACK: {
 			const { items, categories } = state.fixtures;
-			const arr: Array<string> = state.currentPath ? state.currentPath.split('/') : [];
-			const currentCategoryLabel = arr ? arr[arr.length - 1] : '';
-			const currentCategory: CategoryInterface | undefined = fixtures.categories.find(category => category.label === currentCategoryLabel);
+			const currentCategory: CategoryInterface | undefined = [...state.fixtures.categories, ...state.categories]
+				.find((category) => category.id === state.currentCategoryId);
 			const parentId = currentCategory ? currentCategory.parentId : '';
-			const filteredItems = items.filter(items => (items.parentId === parentId));
+			const filteredItems = items.filter(item => (item.parentId === parentId));
 			const filteredCategories = categories.filter(category => (category.parentId === parentId));
+			const pathArr = state.currentPath.split('/');
+			pathArr.pop();
 
 			return {
 				 ...state,
-				currentCategoryId: currentCategory ? currentCategory.id : '',
-				currentPath: state.currentPath.slice(-1, 1),
+				currentCategoryId: parentId,
+				currentPath: pathArr.join('/'),
 				items: filteredItems,
 				categories: filteredCategories,
 			};
@@ -82,6 +83,20 @@ export default function common(state: CommonInterface  = initialState, action: A
 				...state,
 				fixtures: { ...state.fixtures, items: [...state.fixtures.items, item] },
 				items: [ ...state.fixtures.items, item].filter(item => item.parentId === state.currentCategoryId)
+			};
+		}
+
+		case COMMON.ON_REMOVE: {
+			const { id } = payload;
+
+			return {
+				...state,
+				categories: state.categories.filter(category => category.id !== id || category.parentId === id),
+				items: state.items.filter(item => item.id !== id),
+				fixtures: {
+					categories: state.categories.filter(category => category.id !== id),
+					items: state.items.filter(item => item.id !== id),
+				},
 			};
 		}
 
