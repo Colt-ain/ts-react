@@ -5,7 +5,7 @@ import RemoveBtn from './RemoveBtn';
 interface ItemInterface {
 	id: string;
 	label: string;
-	folderId?: string;
+	parentId?: string;
 }
 
 export default function Item(props: { item: ItemInterface; onRemove: any }) {
