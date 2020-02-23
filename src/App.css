@@ -57,3 +57,7 @@ input {
   display: inline-block;
   width: 120px;
 }
+
+.edit.margin {
+  margin-left: 63px;
+}

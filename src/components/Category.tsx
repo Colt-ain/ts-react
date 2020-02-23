@@ -86,9 +86,9 @@ class Category extends Component<CategoryComponent, CategoryState> {
 						: <div className='name'>{ label }</div>
 				}
 
-				<RemoveBtn id={id} onRemove={onRemove} />
+				{ !isEdit && <RemoveBtn id={id} onRemove={onRemove} /> }
 
-				<button onClick={this.editElement} className="edit">{isEdit ? 'Save' : 'Edit'}</button>
+				<button onClick={this.editElement} className={`edit${isEdit ? ' margin' : ''}`}>{isEdit ? 'Save' : 'Edit'}</button>
 			</div>
 		);
 	}
