@@ -8,14 +8,24 @@ body {
 
 .category, .item {
   display: flex;
+  margin-right: auto;
+  max-width: 250px;
   align-items: center;
   margin-bottom: 15px;
   cursor: pointer;
 }
 
-.category .name, .item .name {
+.category .name,
+.item .name {
   display: inline-block;
-  min-width: 120px;
+  min-width: 200px;
+}
+
+.category input,
+.item input {
+  padding: 2px 8px;
+  display: inline-block;
+  min-width: 180px;
 }
 
 .category button, .item button {
@@ -24,8 +34,8 @@ body {
 }
 
 .icon {
-  width: 20px;
-  height: 20px;
+  width: 21px;
+  height: 21px;
   margin-right: 10px;
 }
 

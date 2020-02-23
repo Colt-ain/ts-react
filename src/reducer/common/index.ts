@@ -20,7 +20,7 @@ interface CommonInterface {
 	categories: Array<CategoryInterface>;
 	currentPath: string;
 	items: Array<CategoryInterface>;
-	currentCategoryId: string;
+	currentCategoryId: string | undefined;
 	fixtures: {
 		categories: Array<CategoryInterface>;
 		items: Array<CategoryInterface>;
@@ -96,6 +96,52 @@ export default function common(state: CommonInterface  = initialState, action: A
 				fixtures: {
 					categories: state.categories.filter(category => category.id !== id),
 					items: state.items.filter(item => item.id !== id),
+				},
+			};
+		}
+
+		case COMMON.EDIT: {
+			const { id, label } = payload;
+
+			return {
+				...state,
+				categories: state.categories.map(category => {
+					if (category.id === id) {
+						return {
+							...category, label,
+						}
+					}
+
+					return category;
+				}),
+				items: state.items.map(item => {
+					if (item.id === id) {
+						return {
+							...item, label,
+						};
+					}
+
+					return item;
+				}),
+				fixtures: {
+					categories: state.categories.map(category => {
+						if (category.id === id) {
+							return {
+								...category, label,
+							}
+						}
+
+						return category;
+					}),
+					items: state.items.map(item => {
+						if (item.id === id) {
+							return {
+								...item, label,
+							};
+						}
+
+						return item;
+					}),
 				},
 			};
 		}

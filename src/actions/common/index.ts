@@ -46,3 +46,12 @@ export const onRemove = (id: string): any => {
 		});
 	};
 };
+
+export const editElement = (updatedItem: Category) => {
+	return (dispatch: AppDispatch): any => {
+		return dispatch({
+			type: ACTION_TYPES.COMMON.EDIT,
+			payload: updatedItem,
+		});
+	}
+};

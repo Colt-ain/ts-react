@@ -36,6 +36,8 @@ class NewItemForm extends Component<NewFormInterface, NewFormStateInterface> {
 	}
 
 	onAdd(type: string, parentId: string) {
+		if (!this.state.label) return;
+
 		const id = uuid();
 		const { onAdd } = this.props;
 		const newCategory: CategoryInterface = {
