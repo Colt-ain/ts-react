@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import Item from './Item';
+import { editElement } from '../actions/common';
+import { connect } from 'react-redux';
 
 interface Items {
 	id: string;
@@ -10,15 +12,16 @@ interface Items {
 class ItemsList extends Component<{
 	items: Array<Items>;
 	onRemove: any;
+	editElement: any;
 }> {
 	render() {
-		const { items, onRemove } = this.props;
+		const { items, onRemove, editElement } = this.props;
 
 		return (
 			<div className='items-list'>
 				{
 					items.map((item, i) => {
-						return <Item onRemove={onRemove} item={item} key={i} />
+						return <Item editElement={editElement} onRemove={onRemove} id={item.id} label={item.label} key={i} />
 					})
 				}
 			</div>
@@ -26,5 +29,4 @@ class ItemsList extends Component<{
 	}
 }
 
-
-export default ItemsList;
+export default connect(null, { editElement })(ItemsList);

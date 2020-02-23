@@ -61,3 +61,7 @@ input {
 .edit.margin {
   margin-left: 63px;
 }
+
+.back-btn {
+  margin-bottom: 20px;
+}

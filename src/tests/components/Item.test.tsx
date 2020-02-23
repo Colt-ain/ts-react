@@ -7,11 +7,10 @@ test('Item test', () => {
 	const item = {
 		id: '348720fh',
 		label: 'Test Item',
-		parentId: '',
 	};
 	const onRemove = () => true;
 
-	render(<Item key={1} item={item} onRemove={onRemove} />);
+	render(<Item key={1} id={item.id} label={item.label} onRemove={onRemove} />);
 
 	const container = document.body;
 	const aboutAnchorNode = getByText(container, /Test Item/i);

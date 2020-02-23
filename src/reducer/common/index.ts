@@ -1,6 +1,5 @@
 import ACTION_TYPES from '../../actions/types';
 import fixtures from '../../fixtures';
-import InitialStateInterface from '../../interfaces/InitialState.interface';
 import CategoryInterface from '../../interfaces/Category.interface';
 
 interface ActionInterface {

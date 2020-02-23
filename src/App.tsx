@@ -63,10 +63,10 @@ class App extends Component<AppState> {
 
 		return (
 			<div>
-				<BackBtn />
 				<NewCategoryForm  onAdd={createCategory} />
 				<NewItemForm onAdd={createItem}/>
 				<hr/>
+				<BackBtn />
 				<CurrentPath path={currentPath} />
 				<CategoryList
 					enterCategory={enterCategory}

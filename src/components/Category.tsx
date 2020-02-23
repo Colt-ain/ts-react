@@ -1,4 +1,4 @@
-import React, {Component, SyntheticEvent, createRef} from 'react';
+import React, {Component} from 'react';
 import { connect } from "react-redux";
 import { enterCategory, editElement } from '../actions/common';
 import RemoveBtn from './RemoveBtn';
